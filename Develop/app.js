@@ -12,6 +12,26 @@ const render = require("./lib/htmlRenderer");
 const team = [];
 
 //prompt for which set of questions
+const createTeam = () => {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'role',
+            message: "Which type of employee?",
+            choices: ['Intern', 'Engineer', 'Intern']
+        }
+    ]).then(answers => {
+        console.log(answers)
+        //if/else statements for correct node list
+        if (answers.role == 'Engineer') {
+            createEngineer();
+        } else if (answers.role == 'Intern')    {
+            createIntern();
+        } else  {
+            createManager();
+        }
+    })
+}
 
 //manager
 const createManager = () => {
