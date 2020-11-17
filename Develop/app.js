@@ -18,7 +18,7 @@ const createTeam = () => {
             type: 'list',
             name: 'role',
             message: "Which type of employee?",
-            choices: ['Intern', 'Engineer', 'Intern']
+            choices: ['Manager', 'Engineer', 'Intern']
         }
     ]).then(answers => {
         console.log(answers);
