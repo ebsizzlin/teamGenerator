@@ -12,6 +12,36 @@ const render = require("./lib/htmlRenderer");
 const { create } = require("domain");
 const team = []; //store everything
 
+//prompt for which set of questions
+const createTeam = () => {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'role',
+            message: "Which type of employee?",
+            choices: ['Engineer', 'Intern', 'Manager', 'None']
+        }
+    ]).then(answers => {
+        console.log(answers);
+        //if/else statements for correct node list
+        if (answers.role == 'Engineer') {
+            createEngineer();
+        } else if (answers.role == 'Intern')    {
+            createIntern();
+        } else if (answers.role == 'Manager')  {
+            createManager();
+        } else if (answers.role == 'None')  {
+            generateTeam();
+            console.log('Success!');
+        }
+    })
+}
+
+//help from tutor
+const generateTeam = () => {
+    fs.writeFileSync(outputPath, render(team), 'utf-8');
+}
+
 //manager
 const createManager = () => {
     inquirer.prompt([
@@ -38,37 +68,13 @@ const createManager = () => {
     ]).then(answers =>  {
         console.log(answers);
         //create new object
-        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+        const manager = new Manager(answers.name.trim(), answers.id.trim(), answers.email.trim(), answers.officeNumber.trim());
         //push to array
         team.push(manager);
         createTeam();
     })
 }
 
-//prompt for which set of questions
-const createTeam = () => {
-    inquirer.prompt([
-        {
-            type: 'list',
-            name: 'role',
-            message: "Which type of employee?",
-            choices: ['Engineer', 'Intern', 'None']
-        }
-    ]).then(answers => {
-        console.log(answers);
-        //if/else statements for correct node list
-        if (answers.role == 'Engineer') {
-            createEngineer();
-        } else if (answers.role == 'Intern')    {
-            createIntern();
-        } else  {
-            const createRender = () =>  {
-            fs.writeFile(outputPath, render(team), 'utf-8');
-        }
-        createRender();
-        }
-    })
-}
 
 
 //engineer
@@ -97,7 +103,7 @@ const createEngineer = () => {
     ]).then(answers =>  {
         console.log(answers);
         //create new object
-        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+        const engineer = new Engineer(answers.name.trim(), answers.id.trim(), answers.email.trim(), answers.github.trim());
         //push to array
         team.push(engineer);
         createTeam();
@@ -131,7 +137,7 @@ const createIntern = () => {
     ]).then(answers =>  {
         console.log(answers);
         //create new object
-        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+        const intern = new Intern(answers.name.trim(), answers.id.trim(), answers.email.trim(), answers.school.trim());
         //push to array
         team.push(intern);
         createTeam();
@@ -140,14 +146,6 @@ const createIntern = () => {
 
 
 createManager();
-
-//do something with the render variable
-
-
-
-
-
-
 
 
 // ===========================
