@@ -36,12 +36,66 @@ const createManager = () => {
             name: 'managerOfficeNumber',
             message: "Manager's office number?"
         },
-    ])
+    ]).then
 }
 
-//engineer
-//intern
+createManager();
 
+//engineer
+const createEngineer = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'engineerName',
+            message: "Engineer's name?"
+        },
+        {
+            type: 'input',
+            name: 'engineerId',
+            message: "Engineer's ID?"
+        },
+        {
+            type: 'input',
+            name: 'engineerEmail',
+            message: "Engineer's email?"
+        },
+        {
+            type: 'input',
+            name: 'engineerGitHub',
+            message: "Engineer's GitHub?"
+        },
+    ]).then
+}
+
+createEngineer();
+
+//intern
+const createIntern = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'internName',
+            message: "Intern's name?"
+        },
+        {
+            type: 'input',
+            name: 'internId',
+            message: "Intern's ID?"
+        },
+        {
+            type: 'input',
+            name: 'internEmail',
+            message: "Intern's email?"
+        },
+        {
+            type: 'input',
+            name: 'internSchool',
+            message: "Intern's school?"
+        },
+    ]).then
+}
+
+createIntern();
 
 
 
