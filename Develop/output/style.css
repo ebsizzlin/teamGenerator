@@ -2,12 +2,19 @@
   background-color: steelblue;
 }
 
+.card {
+  margin: 30px;
+  width: 400px;
+}
+
 .card-header {
   background-color: slategray;
+  padding: 30px;
 }
 
 .card-body {
   background-color: whitesmoke;
+  padding: 30px;
 }
 
 h1,

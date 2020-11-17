@@ -16,6 +16,8 @@ Clone repo, use Inquirer npm by running npm init and npm install. Run 'node app.
 
 # Walkthrough
 
+https://drive.google.com/file/d/15DnPJcy8j7BwC8OEBs9AAZfAmyxV-SwV/view?usp=sharing
+
 # Future Additions
 
 - a "do you want to add another employee?" prompt
