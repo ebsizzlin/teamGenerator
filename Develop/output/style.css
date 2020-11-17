@@ -5,6 +5,8 @@
 .card {
   margin: 30px;
   width: 400px;
+  margin-bottom: 15px;
+  height: 100%;
 }
 
 .card-header {

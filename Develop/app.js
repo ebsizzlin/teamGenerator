@@ -9,7 +9,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-const { create } = require("domain");
+const { create } = require("domain"); //idk what this is
 const team = []; //store everything
 
 //prompt for which set of questions
