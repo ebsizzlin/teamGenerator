@@ -21,7 +21,7 @@ const createTeam = () => {
             choices: ['Intern', 'Engineer', 'Intern']
         }
     ]).then(answers => {
-        console.log(answers)
+        console.log(answers);
         //if/else statements for correct node list
         if (answers.role == 'Engineer') {
             createEngineer();
@@ -32,6 +32,8 @@ const createTeam = () => {
         }
     })
 }
+
+createTeam();
 
 //manager
 const createManager = () => {
@@ -56,7 +58,11 @@ const createManager = () => {
             name: 'managerOfficeNumber',
             message: "Manager's office number?"
         },
-    ]).then
+    ]).then(answers =>  {
+        console.log(answers);
+        //create new object
+
+    })
 }
 
 createManager();
@@ -84,7 +90,10 @@ const createEngineer = () => {
             name: 'engineerGitHub',
             message: "Engineer's GitHub?"
         },
-    ]).then
+    ]).then(answers =>  {
+        console.log(answers);
+        //create new object
+    })
 }
 
 createEngineer();
@@ -112,7 +121,10 @@ const createIntern = () => {
             name: 'internSchool',
             message: "Intern's school?"
         },
-    ]).then
+    ]).then(answers =>  {
+        console.log(answers);
+        //create new object
+    })
 }
 
 createIntern();
