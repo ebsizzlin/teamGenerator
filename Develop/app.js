@@ -61,7 +61,9 @@ const createManager = () => {
     ]).then(answers =>  {
         console.log(answers);
         //create new object
-
+        const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+        //push to array
+        team.push(manager);
     })
 }
 
@@ -93,6 +95,9 @@ const createEngineer = () => {
     ]).then(answers =>  {
         console.log(answers);
         //create new object
+        const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
+        //push to array
+        team.push(engineer);
     })
 }
 
