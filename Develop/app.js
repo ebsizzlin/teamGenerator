@@ -129,6 +129,9 @@ const createIntern = () => {
     ]).then(answers =>  {
         console.log(answers);
         //create new object
+        const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+        //push to array
+        team.push(intern);
     })
 }
 
