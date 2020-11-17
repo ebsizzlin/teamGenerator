@@ -10,10 +10,13 @@
   background-color: whitesmoke;
 }
 
-h1 {
+h1,
+h2 {
   color: white;
 }
 
-.fa-glasses {
+.fa-glasses,
+.fa-user-graduate,
+.fa-mug-hot {
   color: white;
 }
