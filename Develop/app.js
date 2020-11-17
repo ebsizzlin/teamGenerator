@@ -9,31 +9,8 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-const team = [];
-
-//prompt for which set of questions
-const createTeam = () => {
-    inquirer.prompt([
-        {
-            type: 'list',
-            name: 'role',
-            message: "Which type of employee?",
-            choices: ['Manager', 'Engineer', 'Intern']
-        }
-    ]).then(answers => {
-        console.log(answers);
-        //if/else statements for correct node list
-        if (answers.role == 'Engineer') {
-            createEngineer();
-        } else if (answers.role == 'Intern')    {
-            createIntern();
-        } else  {
-            createManager();
-        }
-    })
-}
-
-createTeam();
+const { create } = require("domain");
+const team = []; //store everything
 
 //manager
 const createManager = () => {
@@ -64,8 +41,38 @@ const createManager = () => {
         const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
         //push to array
         team.push(manager);
+        createTeam();
     })
 }
+//prompt for which set of questions
+const createTeam = () => {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'role',
+            message: "Which type of employee?",
+            choices: ['Engineer', 'Intern', 'None']
+        }
+    ]).then(answers => {
+        console.log(answers);
+        //if/else statements for correct node list
+        if (answers.role == 'Engineer') {
+            createEngineer();
+        } else if (answers.role == 'Intern')    {
+            createIntern();
+        } else if (answers.role == 'Manager')   {
+            createManager();
+        } else  {
+            const createRender = () =>  {
+            fs.writeFile(outputPath, render(team), 'utf-8');
+        }
+        createRender();
+        }
+    })
+}
+
+createTeam();
+
 
 createManager();
 
@@ -98,6 +105,7 @@ const createEngineer = () => {
         const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
         //push to array
         team.push(engineer);
+        createTeam();
     })
 }
 
@@ -132,12 +140,14 @@ const createIntern = () => {
         const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
         //push to array
         team.push(intern);
+        createTeam();
     })
 }
 
 createIntern();
 
 //do something with the render variable
+
 
 
 
