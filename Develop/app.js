@@ -17,33 +17,34 @@ const createManager = () => {
     inquirer.prompt([
         {
             type: 'input',
-            name: 'managerName',
+            name: 'name',
             message: "Manager's name?"
         },
         {
             type: 'input',
-            name: 'managerId',
+            name: 'id',
             message: "Manager's ID?"
         },
         {
             type: 'input',
-            name: 'managerEmail',
+            name: 'email',
             message: "Manager's email?"
         },
         {
             type: 'input',
-            name: 'managerOfficeNumber',
+            name: 'officeNumber',
             message: "Manager's office number?"
         },
     ]).then(answers =>  {
         console.log(answers);
         //create new object
-        const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
         //push to array
         team.push(manager);
         createTeam();
     })
 }
+
 //prompt for which set of questions
 const createTeam = () => {
     inquirer.prompt([
@@ -60,8 +61,6 @@ const createTeam = () => {
             createEngineer();
         } else if (answers.role == 'Intern')    {
             createIntern();
-        } else if (answers.role == 'Manager')   {
-            createManager();
         } else  {
             const createRender = () =>  {
             fs.writeFile(outputPath, render(team), 'utf-8');
@@ -71,80 +70,76 @@ const createTeam = () => {
     })
 }
 
-createTeam();
-
-
-createManager();
 
 //engineer
 const createEngineer = () => {
     inquirer.prompt([
         {
             type: 'input',
-            name: 'engineerName',
+            name: 'name',
             message: "Engineer's name?"
         },
         {
             type: 'input',
-            name: 'engineerId',
+            name: 'id',
             message: "Engineer's ID?"
         },
         {
             type: 'input',
-            name: 'engineerEmail',
+            name: 'email',
             message: "Engineer's email?"
         },
         {
             type: 'input',
-            name: 'engineerGitHub',
+            name: 'github',
             message: "Engineer's GitHub?"
         },
     ]).then(answers =>  {
         console.log(answers);
         //create new object
-        const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         //push to array
         team.push(engineer);
         createTeam();
     })
 }
 
-createEngineer();
 
 //intern
 const createIntern = () => {
     inquirer.prompt([
         {
             type: 'input',
-            name: 'internName',
+            name: 'name',
             message: "Intern's name?"
         },
         {
             type: 'input',
-            name: 'internId',
+            name: 'id',
             message: "Intern's ID?"
         },
         {
             type: 'input',
-            name: 'internEmail',
+            name: 'email',
             message: "Intern's email?"
         },
         {
             type: 'input',
-            name: 'internSchool',
+            name: 'school',
             message: "Intern's school?"
         },
     ]).then(answers =>  {
         console.log(answers);
         //create new object
-        const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
         //push to array
         team.push(intern);
         createTeam();
     })
 }
 
-createIntern();
+
+createManager();
 
 //do something with the render variable
 
