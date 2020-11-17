@@ -11,8 +11,34 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const team = [];
 
+//prompt for which set of questions
 
 //manager
+const createManager = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'managerName',
+            message: "Manager's name?"
+        },
+        {
+            type: 'input',
+            name: 'managerId',
+            message: "Manager's ID?"
+        },
+        {
+            type: 'input',
+            name: 'managerEmail',
+            message: "Manager's email?"
+        },
+        {
+            type: 'input',
+            name: 'managerOfficeNumber',
+            message: "Manager's office number?"
+        },
+    ])
+}
+
 //engineer
 //intern
 
