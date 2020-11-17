@@ -137,6 +137,8 @@ const createIntern = () => {
 
 createIntern();
 
+//do something with the render variable
+
 
 
 
