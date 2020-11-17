@@ -1,0 +1,19 @@
+.jumbotron {
+  background-color: steelblue;
+}
+
+.card-header {
+  background-color: slategray;
+}
+
+.card-body {
+  background-color: whitesmoke;
+}
+
+h1 {
+  color: white;
+}
+
+.fa-glasses {
+  color: white;
+}
